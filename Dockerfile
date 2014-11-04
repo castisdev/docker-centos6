@@ -6,7 +6,7 @@ RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noar
 
 # Install
 RUN \
-  yum install -y sudo wget gcc gcc-c++ make unzip openssl openssl-devel tar;\
+  yum install -y sudo wget gcc gcc-c++ make unzip openssl openssl-devel;\
   yum install -y git cppcheck;\
   yum install -y tar libuuid-devel;\
   yum -y clean all
