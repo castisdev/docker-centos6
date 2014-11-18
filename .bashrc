@@ -4,7 +4,6 @@ alias mv='mv -i'
 
 alias ls='ls -hFG'
 alias l='ls -lF'
-alias ll='ls -alF'
 alias lt='ls -ltrF'
 alias ll='ls -alF'
 alias lls='ls -alSrF'
@@ -16,8 +15,6 @@ alias tarx='tar xvf'
 alias tarxz='tar xvzf'
 
 alias less='less -R'
-alias os='lsb_release -a'
-alias vi='vim'
 
 # Colorize directory listing
 alias ls="ls -ph --color=auto"
