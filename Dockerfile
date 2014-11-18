@@ -5,10 +5,21 @@ FROM centos:centos6
 RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
 # Install
-RUN \
-  yum install -y sudo wget gcc gcc-c++ make unzip openssl openssl-devel;\
-  yum install -y git cppcheck;\
-  yum install -y tar libuuid-devel;\
+RUN yum install -y \
+  sudo \
+  wget \
+  gcc \
+  gcc-c++ \
+  make \
+  unzip \
+  openssl \
+  openssl-devel \
+  git \
+  cppcheck \
+  tar \
+  boost-devel \
+  libuuid-devel \
+  gdb; \
   yum -y clean all
 
 ADD ./install_cmake30.sh /script/
