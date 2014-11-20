@@ -16,10 +16,13 @@ RUN yum install -y \
   openssl-devel \
   git \
   cppcheck \
+  subversion \
   tar \
   boost-devel \
+  glibc-devel \
   libuuid-devel \
-  gdb; \
+  gdb \
+  valgrind; \
   yum -y clean all
 
 ADD ./install_cmake30.sh /script/
@@ -27,11 +30,11 @@ RUN /script/install_cmake30.sh
 
 ADD ./install_devtoolset2.sh /script/
 RUN /script/install_devtoolset2.sh
+ENV PATH /opt/rh/devtoolset-2/root/usr/bin/:$PATH
 
 ADD ./install_boost156.sh /script/
 RUN /script/install_boost156.sh
 
-ENV PATH /opt/rh/devtoolset-2/root/usr/bin/:$PATH
 ENV BOOST_ROOT /usr/local/boost156
 
 ADD ./install_cryptopp.sh /script/
@@ -39,6 +42,9 @@ RUN /script/install_cryptopp.sh
 
 ADD ./install_gmock170.sh /script/
 RUN /script/install_gmock170.sh
+
+ADD install_python34.sh /script/
+RUN /script/install_python34.sh
 
 ADD ./install_cpptools.sh /script/
 RUN /script/install_cpptools.sh
