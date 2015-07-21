@@ -25,16 +25,16 @@ RUN yum install -y \
   valgrind; \
   yum -y clean all
 
-ADD ./install_cmake30.sh /script/
-RUN /script/install_cmake30.sh
+ADD ./install_cmake32.sh /script/
+RUN /script/install_cmake32.sh
 
 ADD ./install_devtoolset2.sh /script/
 RUN /script/install_devtoolset2.sh
 ENV PATH /opt/rh/devtoolset-2/root/usr/bin/:$PATH
 
-ADD ./install_boost157.sh /script/
-RUN /script/install_boost157.sh
-ENV BOOST_ROOT /usr/local/boost157
+ADD ./install_boost158.sh /script/
+RUN /script/install_boost158.sh
+ENV BOOST_ROOT /usr/local/boost158
 
 ADD ./install_cryptopp.sh /script/
 RUN /script/install_cryptopp.sh
