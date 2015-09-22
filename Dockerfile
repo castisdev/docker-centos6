@@ -18,7 +18,6 @@ RUN yum install -y \
   cppcheck \
   subversion \
   tar \
-  boost-devel \
   glibc-devel \
   libuuid-devel \
   gdb \
