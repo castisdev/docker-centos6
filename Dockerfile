@@ -1,8 +1,8 @@
 # Pull base image
-FROM centos:centos6
+FROM centos:6
 
 # Install EPEL repo
-RUN rpm -ivh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+RUN yum install -y epel-release
 
 # Install
 RUN yum install -y \
@@ -25,12 +25,12 @@ RUN yum install -y \
   valgrind; \
   yum -y clean all
 
+ADD ./install_devtoolset3.sh /script/
+RUN /script/install_devtoolset3.sh
+ENV PATH /opt/rh/devtoolset-3/root/usr/bin/:$PATH
+
 ADD ./install_cmake32.sh /script/
 RUN /script/install_cmake32.sh
-
-ADD ./install_devtoolset2.sh /script/
-RUN /script/install_devtoolset2.sh
-ENV PATH /opt/rh/devtoolset-2/root/usr/bin/:$PATH
 
 ADD ./install_boost158.sh /script/
 RUN /script/install_boost158.sh
@@ -55,5 +55,4 @@ ADD ./.bashrc /root/.bashrc
 ENV HOME /root
 
 # Define default command
-CMD ["bash"]
-
+CMD ["scl", "enable", "devtoolset-3", "bash"]
