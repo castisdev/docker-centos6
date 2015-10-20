@@ -21,6 +21,7 @@ RUN yum install -y \
   glibc-devel \
   libuuid-devel \
   gdb \
+  golang \
   valgrind; \
   yum -y clean all
 
