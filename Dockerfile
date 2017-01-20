@@ -33,9 +33,9 @@ ENV PATH /opt/rh/devtoolset-4/root/usr/bin/:$PATH
 ADD ./install_cmake351.sh /script/
 RUN /script/install_cmake351.sh
 
-ADD ./install_boost159.sh /script/
-RUN /script/install_boost159.sh
-ENV BOOST_ROOT /usr/local/boost159
+ADD ./install_boost162.sh /script/
+RUN /script/install_boost162.sh
+ENV BOOST_ROOT /usr/local/boost162
 
 ADD ./install_cryptopp563.sh /script/
 RUN /script/install_cryptopp563.sh
