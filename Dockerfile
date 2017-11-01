@@ -28,7 +28,13 @@ RUN yum install -y \
   vim-enhanced \
   unixODBC-devel \
   mysql-connector-odbc \
-  sysstat; \
+  sysstat \
+  yum-utils; \
+  yum -y clean all
+
+# Install Intel TBB
+RUN yum-config-manager -y --add-repo https://yum.repos.intel.com/tbb/setup/intel-tbb.repo; \
+  yum install -y tbb-devel; \
   yum -y clean all
 
 ADD install_devtoolset6.sh /script/
