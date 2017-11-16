@@ -29,7 +29,8 @@ RUN yum install -y \
   unixODBC-devel \
   mysql-connector-odbc \
   sysstat \
-  yum-utils; \
+  yum-utils \
+  gperftools-devel; \
   yum -y clean all
 
 # Install Intel TBB
