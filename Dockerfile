@@ -16,6 +16,8 @@ RUN yum install -y \
   git \
   subversion \
   tar \
+  boost-devel \
+  boost-static \
   glibc-devel \
   libuuid-devel \
   gdb \
