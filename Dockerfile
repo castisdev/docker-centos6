@@ -1,6 +1,8 @@
 # Pull base image
 FROM centos:6
 
+RUN sed -i -e 's/^mirrorlist/#mirrorlist/g' -e 's/^#baseurl=http:\/\/mirror.centos.org\/centos\/$releasever\//baseurl=http:\/\/vault.centos.org\/6.10\//g' /etc/yum.repos.d/CentOS-Base.repo
+
 # Install EPEL repo
 RUN yum install -y epel-release; yum -y clean all
 
@@ -33,7 +35,9 @@ RUN yum install -y \
   sysstat \
   yum-utils \
   gperftools-devel \
-  golang; \
+  golang \
+  ccache \
+  libunwind-devel; \
   yum -y clean all
 
 # Install Intel TBB
@@ -41,19 +45,19 @@ RUN yum-config-manager -y --add-repo https://yum.repos.intel.com/tbb/setup/intel
   yum install -y tbb-devel; \
   yum -y clean all
 
-ADD install_devtoolset8.sh /script/
-RUN /script/install_devtoolset8.sh
-ENV PATH /opt/rh/devtoolset-8/root/usr/bin/:$PATH
+ADD install_devtoolset9.sh /script/
+RUN /script/install_devtoolset9.sh
+SHELL [ "scl", "enable", "devtoolset-9" ]
 
-ADD install_cmake3170.sh /script/
-RUN /script/install_cmake3170.sh
+ADD install_cmake3191.sh /script/
+RUN /script/install_cmake3191.sh
 
 ADD install_libbacktrace.sh /script/
 RUN /script/install_libbacktrace.sh
 
-ADD install_boost171.sh /script/
-RUN /script/install_boost171.sh
-ENV Boost_DIR /usr/local/boost_1_71_0
+ADD install_boost175.sh /script/
+RUN /script/install_boost175.sh
+ENV Boost_DIR /usr/local/boost_1_75_0
 
 ADD install_cryptopp820.sh /script/
 RUN /script/install_cryptopp820.sh
@@ -64,26 +68,26 @@ RUN /script/install_googletest1100.sh
 ADD install_openssl102u.sh /script/
 RUN /script/install_openssl102u.sh
 
-ADD install_python2717.sh /script/
-RUN /script/install_python2717.sh
+ADD install_python2718.sh /script/
+RUN /script/install_python2718.sh
 
-ADD install_python382.el6.sh /script/
-RUN /script/install_python382.el6.sh
+ADD install_python390.el6.sh /script/
+RUN /script/install_python390.el6.sh
 
 ADD install_cpptools.sh /script/
 RUN /script/install_cpptools.sh
 
-ADD install_cppcheck190.sh /script/
-RUN /script/install_cppcheck190.sh
+ADD install_cppcheck23.sh /script/
+RUN /script/install_cppcheck23.sh
 
 ADD install_zsh58.el6.sh /script/
 RUN /script/install_zsh58.el6.sh
 
-ADD install_ninja1100.sh /script/
-RUN /script/install_ninja1100.sh
+ADD install_ninja1102.sh /script/
+RUN /script/install_ninja1102.sh
 
-ADD install_ffmpeg422.el6.sh /script/
-RUN /script/install_ffmpeg422.el6.sh
+ADD install_ffmpeg431.el6.sh /script/
+RUN /script/install_ffmpeg431.el6.sh
 
 # set timezone
 RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
@@ -98,4 +102,4 @@ ADD .bashrc /root/.bashrc
 ENV HOME /root
 
 # Define default command
-CMD ["scl", "enable", "devtoolset-8", "zsh"]
+CMD ["scl", "enable", "devtoolset-9", "zsh"]
