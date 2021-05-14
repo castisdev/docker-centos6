@@ -13,7 +13,7 @@ make altinstall -j$(nproc)
 cd ~
 rm -rf Python-2.7.18*
 
-wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate
+wget https://bootstrap.pypa.io/pip/2.7/get-pip.py --no-check-certificate
 python2.7 get-pip.py
 rm -rf get-pip.py
 
