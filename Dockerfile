@@ -1,6 +1,8 @@
 # Pull base image
 FROM centos:6
 
+LABEL org.opencontainers.image.source https://github.com/castisdev/docker-centos6
+
 RUN sed -i -e 's/^mirrorlist/#mirrorlist/g' -e 's/^#baseurl=http:\/\/mirror.centos.org\/centos\/$releasever\//baseurl=http:\/\/vault.centos.org\/6.10\//g' /etc/yum.repos.d/CentOS-Base.repo
 
 # Install EPEL repo
