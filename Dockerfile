@@ -49,21 +49,21 @@ ADD install_devtoolset9.sh /script/
 RUN /script/install_devtoolset9.sh
 SHELL [ "scl", "enable", "devtoolset-9" ]
 
-ADD install_cmake3202.sh /script/
-RUN /script/install_cmake3202.sh
+ADD install_cmake3211.sh /script/
+RUN /script/install_cmake3211.sh
 
 ADD install_libbacktrace.sh /script/
 RUN /script/install_libbacktrace.sh
 
-ADD install_boost176.sh /script/
-RUN /script/install_boost176.sh
-ENV Boost_DIR /usr/local/boost_1_76_0
+ADD install_boost177.sh /script/
+RUN /script/install_boost177.sh
+ENV Boost_DIR /usr/local/boost_1_77_0
 
 ADD install_cryptopp850.sh /script/
 RUN /script/install_cryptopp850.sh
 
-ADD install_googletest1100.sh /script/
-RUN /script/install_googletest1100.sh
+ADD install_googletest1110.sh /script/
+RUN /script/install_googletest1110.sh
 
 ADD install_openssl102u.sh /script/
 RUN /script/install_openssl102u.sh
@@ -71,14 +71,14 @@ RUN /script/install_openssl102u.sh
 ADD install_python2718.sh /script/
 RUN /script/install_python2718.sh
 
-ADD install_python395.el6.sh /script/
-RUN /script/install_python395.el6.sh
+ADD install_python396.el6.sh /script/
+RUN /script/install_python396.el6.sh
 
 ADD install_cpptools.sh /script/
 RUN /script/install_cpptools.sh
 
-ADD install_cppcheck241.sh /script/
-RUN /script/install_cppcheck241.sh
+ADD install_cppcheck25.sh /script/
+RUN /script/install_cppcheck25.sh
 
 ADD install_zsh58.el6.sh /script/
 RUN /script/install_zsh58.el6.sh
