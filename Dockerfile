@@ -51,8 +51,8 @@ ADD install_devtoolset9.sh /script/
 RUN /script/install_devtoolset9.sh
 SHELL [ "scl", "enable", "devtoolset-9" ]
 
-ADD install_cmake3211.sh /script/
-RUN /script/install_cmake3211.sh
+ADD install_cmake3212.sh /script/
+RUN /script/install_cmake3212.sh
 
 ADD install_libbacktrace.sh /script/
 RUN /script/install_libbacktrace.sh
