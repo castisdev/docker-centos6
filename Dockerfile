@@ -8,6 +8,8 @@ RUN sed -i -e 's/^mirrorlist/#mirrorlist/g' -e 's/^#baseurl=http:\/\/mirror.cent
 # Install EPEL repo
 RUN yum install -y epel-release; yum -y clean all
 
+RUN yum -y install http://opensource.wandisco.com/centos/6/git/x86_64/wandisco-git-release-6-1.noarch.rpm; yum -y clean all
+
 # Install
 RUN yum install -y \
   sudo \
@@ -51,18 +53,18 @@ ADD install_devtoolset9.sh /script/
 RUN /script/install_devtoolset9.sh
 SHELL [ "scl", "enable", "devtoolset-9" ]
 
-ADD install_cmake3212.sh /script/
-RUN /script/install_cmake3212.sh
+ADD install_cmake3221.sh /script/
+RUN /script/install_cmake3221.sh
 
 ADD install_libbacktrace.sh /script/
 RUN /script/install_libbacktrace.sh
 
-ADD install_boost177.sh /script/
-RUN /script/install_boost177.sh
-ENV Boost_DIR /usr/local/boost_1_77_0
+ADD install_boost178.sh /script/
+RUN /script/install_boost178.sh
+ENV Boost_DIR /usr/local/boost_1_78_0
 
-ADD install_cryptopp850.sh /script/
-RUN /script/install_cryptopp850.sh
+ADD install_cryptopp860.sh /script/
+RUN /script/install_cryptopp860.sh
 
 ADD install_googletest1110.sh /script/
 RUN /script/install_googletest1110.sh
@@ -73,14 +75,14 @@ RUN /script/install_openssl102u.sh
 ADD install_python2718.sh /script/
 RUN /script/install_python2718.sh
 
-ADD install_python396.el6.sh /script/
-RUN /script/install_python396.el6.sh
+ADD install_python399.el6.sh /script/
+RUN /script/install_python399.el6.sh
 
 ADD install_cpptools.sh /script/
 RUN /script/install_cpptools.sh
 
-ADD install_cppcheck25.sh /script/
-RUN /script/install_cppcheck25.sh
+ADD install_cppcheck26.sh /script/
+RUN /script/install_cppcheck26.sh
 
 ADD install_zsh58.el6.sh /script/
 RUN /script/install_zsh58.el6.sh
@@ -88,8 +90,8 @@ RUN /script/install_zsh58.el6.sh
 ADD install_ninja1102.sh /script/
 RUN /script/install_ninja1102.sh
 
-ADD install_ffmpeg44.el6.sh /script/
-RUN /script/install_ffmpeg44.el6.sh
+ADD install_ffmpeg441.el6.sh /script/
+RUN /script/install_ffmpeg441.el6.sh
 
 # set timezone
 RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
