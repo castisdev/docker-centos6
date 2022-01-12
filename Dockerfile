@@ -93,6 +93,9 @@ RUN /script/install_ninja1102.sh
 ADD install_ffmpeg441.el6.sh /script/
 RUN /script/install_ffmpeg441.el6.sh
 
+ADD install_golang1176.sh /script/
+RUN /script/install_golang1176.sh
+
 # set timezone
 RUN ln -snf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
@@ -104,6 +107,7 @@ ADD .bashrc /root/.bashrc
 
 # Set environment variables
 ENV HOME /root
+ENV PATH="${PATH}:${HOME}/go/bin:/usr/local/go/bin"
 
 # Define default command
 CMD ["scl", "enable", "devtoolset-9", "zsh"]
