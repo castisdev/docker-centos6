@@ -1,9 +1,9 @@
 #!/bin/bash -e
 set -x #echo on
 cd ~
-wget -nv --no-check-certificate --content-disposition https://github.com/openssl/openssl/archive/OpenSSL_1_0_2u.tar.gz
-tar xf openssl-OpenSSL_1_0_2u.tar.gz
-cd openssl-OpenSSL_1_0_2u
+wget -nv --no-check-certificate --content-disposition https://github.com/openssl/openssl/archive/refs/tags/OpenSSL_1_1_1q.tar.gz
+tar xf openssl-OpenSSL_1_1_1q.tar.gz
+cd openssl-OpenSSL_1_1_1q
 ./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl shared
 make -j$(nproc); make install
 cd ~
